@@ -13,16 +13,10 @@ const initPokemon = async () => {
 const getPokemon = async(id) => {
     let url = `https://pokeapi.co/api/v2/pokemon/${id}`;
     let res = await fetch(url) // veriyi apiden çekerken çok fazla işlem yapılacağı için mütealip kodun çalışmasını engellememek adına await kullanıyoruz.
-
     let data = await res.json()
-    // console.log(data)
+    console.log(data)
     createPokemonBox(data)
 }
-
-// getPokemon("pikachu")
-// getPokemon("bulbasaur")
-
-
 
 const createPokemonBox = (pokemon) =>{
     const name = pokemon.name[0].toUpperCase() + pokemon.name.slice(1);
@@ -34,8 +28,8 @@ const createPokemonBox = (pokemon) =>{
     pokemonEl.classList.add("poke-Box")
 
     pokemonEl.innerHtml = `
-    <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/${id}.png"
-    alt="${name} image>
+    // <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/${id}.png"
+    // alt="${name} image>
 
     <h4 class="poke-name">${name}</h4>
     <p class="poke-id">${id}</p>
@@ -44,15 +38,25 @@ const createPokemonBox = (pokemon) =>{
     `
 
 pokeContainer.appendChild(pokemonEl)
+
 }
 
 initPokemon()
 
 
 searchInput.addEventListener("input", function(e){
-    const pokeName = document.querySelector( )
-    const search = searchInput.value;
+    const pokeNames = document.querySelectorAll(".poke-name");
+    const search = searchInput.value.toLowerCase();
+console.log(pokeNames)
+    pokeNames.forEach((pokeName)=>{
+        pokeName.parentElement.style.display = "block";
 
+        if(!pokeName.innerHTML.toLocaleLowerCase().includes(search)){
+            pokeName.parentElement.style.display = "none"
+        }
+    })
+
+  console.log(search);  
 
 
 })
