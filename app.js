@@ -2,7 +2,7 @@ const searchInput  = document.querySelector("#poke-input")
 const searchBtn =document.querySelector(".btn-search")
 const pokeContainer = document.querySelector(".poke-container")
 
-const pokeCount = 15;
+const pokeCount = 905;
 
 const initPokemon = async () => {
     for (let i=1; i<= pokeCount; i++){
@@ -14,7 +14,7 @@ const getPokemon = async(id) => {
     let url = `https://pokeapi.co/api/v2/pokemon/${id}`;
     let res = await fetch(url) // veriyi apiden çekerken çok fazla işlem yapılacağı için mütealip kodun çalışmasını engellememek adına await kullanıyoruz.
     let data = await res.json()
-    console.log(data)
+    // console.log(data)
     createPokemonBox(data)
 }
 
