@@ -28,7 +28,7 @@ const createPokemonBox = (pokemon) =>{
     pokemonEl.classList.add("poke-box")
 
     
-    pokemonEl.innerHtml = 
+    pokemonEl.innerHTML = 
     `
     <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/${id}.png"
     alt="${name} image"/>
@@ -36,7 +36,7 @@ const createPokemonBox = (pokemon) =>{
     <h4 class="poke-name">${name}</h4>
     
     <p class="poke-id">${id}</p>
-    <p class="poke-weight">${weight}</p>
+    <p class="poke-weight">Weight: ${weight}</p>
     <p class="poke-type">Type: ${type}</p>
     `
     pokeContainer.appendChild(pokemonEl)
