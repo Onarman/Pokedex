@@ -5,7 +5,7 @@ const pokeContainer = document.querySelector(".poke-container")
 const pokeCount = 15;
 
 const initPokemon = async () => {
-    for (let i=1; i<= pokeCount ; i++){
+    for (let i=1; i<= pokeCount; i++){
         await getPokemon(i)
     }
 }
@@ -25,29 +25,28 @@ const createPokemonBox = (pokemon) =>{
     const type = pokemon.types[0].type.name;
     
     const pokemonEl = document.createElement("div");
-    pokemonEl.classList.add("poke-Box")
+    pokemonEl.classList.add("poke-box")
 
-    pokemonEl.innerHtml = `
-    // <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/${id}.png"
-    // alt="${name} image>
+    
+    pokemonEl.innerHtml = 
+    `
+    <img src="https://assets.pokemon.com/assets/cms2/img/pokedex/full/${id}.png"
+    alt="${name} image"/>
 
     <h4 class="poke-name">${name}</h4>
+    
     <p class="poke-id">${id}</p>
     <p class="poke-weight">${weight}</p>
     <p class="poke-type">Type: ${type}</p>
     `
-
-pokeContainer.appendChild(pokemonEl)
-
+    pokeContainer.appendChild(pokemonEl)
 }
-
 initPokemon()
-
 
 searchInput.addEventListener("input", function(e){
     const pokeNames = document.querySelectorAll(".poke-name");
     const search = searchInput.value.toLowerCase();
-console.log(pokeNames)
+    console.log(pokeNames)
     pokeNames.forEach((pokeName)=>{
         pokeName.parentElement.style.display = "block";
 
